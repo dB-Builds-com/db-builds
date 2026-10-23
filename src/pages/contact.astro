@@ -1,0 +1,242 @@
+---
+import Base from '../layouts/Base.astro';
+import { social, site } from '../config/site';
+---
+
+<Base
+  title="Contact"
+  description="Tell me about the idea. Rough is fine; that's what the first conversation is for."
+>
+  <section class="contact container">
+    <div class="contact-intro">
+      <p class="mono-label">Contact</p>
+      <h1 class="contact-title">Let's build<br />something.</h1>
+      <p class="contact-sub">
+        Tell me about the idea. Rough is fine; that's what the first
+        conversation is for.
+      </p>
+      <div class="social-list">
+        <a href={social.x.url} class="social-row">
+          <span>X</span>
+          <span class="social-handle">{social.x.handle} ↗</span>
+        </a>
+        <a href={social.telegram.url} class="social-row">
+          <span>Telegram</span>
+          <span class="social-handle">{social.telegram.handle} ↗</span>
+        </a>
+        <a href={social.discord.url} class="social-row">
+          <span>Discord</span>
+          <span class="social-handle">{social.discord.label} ↗</span>
+        </a>
+        <a href={social.github.url} class="social-row">
+          <span>GitHub</span>
+          <span class="social-handle">{social.github.handle} ↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <form id="contact-form" data-email={site.contactEmail}>
+        <div class="form-grid">
+          <div class="field">
+            <label for="c-name">Name</label>
+            <input id="c-name" name="name" type="text" placeholder="Your name" required />
+          </div>
+          <div class="field">
+            <label for="c-email">Email</label>
+            <input id="c-email" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+        </div>
+        <div class="field">
+          <label for="c-type">What do you need?</label>
+          <select id="c-type" name="type">
+            <option>Trading bot or automation</option>
+            <option>Website or web app</option>
+            <option>Solana or token tooling</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="c-msg">Tell me about it</label>
+          <textarea id="c-msg" name="message" rows="6" placeholder="What are you trying to build?" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send message</button>
+      </form>
+
+      <div id="contact-success" class="success-state" hidden>
+        <h2 class="success-title">Message sent.</h2>
+        <p class="success-text">Thanks for reaching out. I'll get back to you soon.</p>
+        <button type="button" id="contact-reset" class="btn btn-outline">Send another</button>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const successState = document.getElementById('contact-success') as HTMLElement;
+  const resetBtn = document.getElementById('contact-reset') as HTMLButtonElement;
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const email = form.dataset.email ?? '';
+    const data = new FormData(form);
+    const name = data.get('name');
+    const from = data.get('email');
+    const type = data.get('type');
+    const message = data.get('message');
+
+    const subject = `New project inquiry: ${type}`;
+    const body = `Name: ${name}\nEmail: ${from}\nWhat they need: ${type}\n\n${message}`;
+    const mailto = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailto;
+
+    form.hidden = true;
+    successState.hidden = false;
+  });
+
+  resetBtn.addEventListener('click', () => {
+    form.reset();
+    form.hidden = false;
+    successState.hidden = true;
+  });
+</script>
+
+<style>
+  .contact {
+    padding-top: 96px;
+    padding-bottom: 96px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 64px;
+    align-items: flex-start;
+  }
+
+  .contact-intro {
+    flex: 1 1 340px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .contact-title {
+    font-size: clamp(44px, 6vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    font-weight: 700;
+  }
+
+  .contact-sub {
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 420px;
+  }
+
+  .social-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--line);
+    margin-top: 16px;
+  }
+
+  .social-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  .social-handle {
+    font-family: var(--font-mono);
+    color: var(--muted);
+  }
+
+  .form-card {
+    flex: 1 1 480px;
+    border: 1px solid var(--ink);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+  }
+
+  #contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .field label {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    font: inherit;
+    font-size: 16px;
+    padding: 14px 16px;
+    border: 1px solid var(--muted-2);
+    border-radius: var(--radius-sm);
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  .field textarea {
+    resize: vertical;
+  }
+
+  .submit-btn {
+    font: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 16px 24px;
+    min-height: 52px;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: var(--ink);
+    color: var(--bg);
+    cursor: pointer;
+  }
+
+  .success-state {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 40px 0;
+  }
+
+  .success-title {
+    font-size: 36px;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+  }
+
+  .success-text {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  .success-state .btn {
+    align-self: flex-start;
+    padding: 12px 18px;
+    font-size: 15px;
+    min-height: 44px;
+  }
+</style>

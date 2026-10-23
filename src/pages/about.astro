@@ -1,0 +1,125 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="About"
+  description="I'm an independent developer building trading bots, web apps, and Solana tooling, for clients and for my own projects."
+>
+  <section class="about container">
+    <div class="photo-frame">
+      <img src="/images/about-photo.jpg" alt="Illustrated portrait of dB" />
+    </div>
+    <div class="about-content">
+      <p class="mono-label">About</p>
+      <h1 class="about-title">I'm dB. I turn ideas into working products.</h1>
+      <p class="about-text">
+        I'm an independent developer building trading bots, web apps, and
+        Solana tooling, for clients and for my own projects.
+      </p>
+      <p class="about-text">
+        Every build starts with a plan: the architecture gets worked out
+        before the code does. That keeps projects focused and gets them
+        shipped. When a project needs hardware, I'm just as comfortable with
+        a Raspberry Pi or a 3D printer as with a keyboard.
+      </p>
+      <div class="facts-grid">
+        <div class="fact-cell">
+          <span class="mono-label fact-label">Focus</span>
+          <span class="fact-value">Bots, web apps, Solana</span>
+        </div>
+        <div class="fact-cell">
+          <span class="mono-label fact-label">Also</span>
+          <span class="fact-value">Hardware &amp; prototyping</span>
+        </div>
+        <div class="fact-cell">
+          <span class="mono-label fact-label">Based in</span>
+          <span class="fact-value">United States</span>
+        </div>
+      </div>
+      <div class="about-actions">
+        <a href="/contact" class="btn btn-solid">Work with me</a>
+        <a href="/projects" class="btn btn-outline">See projects</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .about {
+    padding-top: 96px;
+    padding-bottom: 96px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 64px;
+    align-items: flex-start;
+  }
+
+  .photo-frame {
+    flex: 1 1 320px;
+    max-width: 420px;
+    aspect-ratio: 4 / 5;
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-content {
+    flex: 1 1 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .about-title {
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+    font-weight: 700;
+  }
+
+  .about-text {
+    font-size: 19px;
+    line-height: 1.65;
+    color: #404040;
+  }
+
+  .facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: 8px;
+  }
+
+  .fact-cell {
+    background: var(--bg);
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .fact-label {
+    font-size: 12px;
+  }
+
+  .fact-value {
+    font-size: 16px;
+  }
+
+  .about-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 8px;
+  }
+</style>

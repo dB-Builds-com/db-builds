@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>dB Builds — About</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#0A0A0A}a:hover{color:#525252}
+</style>
+</helmet>
+<div style="font-family: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif; color: #0A0A0A; background: #FFFFFF; min-height: 100%">
+
+<header style="border-bottom: 1px solid #E5E5E5">
+<nav style="max-width: 1200px; margin: 0 auto; padding: 20px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="Main.dc.html" style="font-weight: 700; font-size: 20px; letter-spacing: -0.03em; text-decoration: none; color: #0A0A0A">dB Builds</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 15px">
+<a href="Projects.dc.html" style="text-decoration: none; color: #0A0A0A">Projects</a>
+<a href="Services.dc.html" style="text-decoration: none; color: #0A0A0A">Services</a>
+<a href="About.dc.html" aria-current="page" style="text-decoration: underline; text-underline-offset: 6px; color: #0A0A0A; font-weight: 500">About</a>
+<a href="Contact.dc.html" style="text-decoration: none; color: #FFFFFF; background: #0A0A0A; padding: 12px 18px; border-radius: 6px; font-weight: 500">Start a project</a>
+</div>
+</nav>
+</header>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 96px 32px; display: flex; flex-wrap: wrap; gap: 64px; align-items: flex-start">
+<div style="flex: 1 1 320px; max-width: 420px; aspect-ratio: 4 / 5; background: #F5F5F5; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden">
+<sc-if value="{{hasPhoto}}" hint-placeholder-val="{{ false }}"><img src="{{photo}}" alt="Illustrated portrait of dB" style="width: 100%; height: 100%; object-fit: cover; display: block"></sc-if>
+<sc-if value="{{noPhoto}}" hint-placeholder-val="{{ true }}"><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 14px; color: #525252">[Photo or logo]</span></sc-if>
+</div>
+<div style="flex: 1 1 480px; display: flex; flex-direction: column; gap: 24px">
+<p style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #525252">About</p>
+<h1 style="margin: 0; font-size: clamp(40px, 5vw, 64px); line-height: 1.02; letter-spacing: -0.045em; font-weight: 700">I’m dB. I turn ideas into working products.</h1>
+<p style="margin: 0; font-size: 19px; line-height: 1.65; color: #404040">I’m an independent developer building trading bots, web apps, and Solana tooling, for clients and for my own projects.</p>
+<p style="margin: 0; font-size: 19px; line-height: 1.65; color: #404040">Every build starts with a plan: the architecture gets worked out before the code does. That keeps projects focused and gets them shipped. When a project needs hardware, I’m just as comfortable with a Raspberry Pi or a 3D printer as with a keyboard.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: #E5E5E5; border: 1px solid #E5E5E5; margin-top: 8px">
+<div style="background: #FFFFFF; padding: 20px 24px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: #525252">Focus</span>
+<span style="font-size: 16px">Bots, web apps, Solana</span>
+</div>
+<div style="background: #FFFFFF; padding: 20px 24px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: #525252">Also</span>
+<span style="font-size: 16px">Hardware &amp; prototyping</span>
+</div>
+<div style="background: #FFFFFF; padding: 20px 24px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: &quot;Geist Mono&quot;, ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: rgb(82, 82, 82)">Based in</span><span style="font-size: 16px">United States</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 8px">
+<a href="Contact.dc.html" style="text-decoration: none; color: #FFFFFF; background: #0A0A0A; padding: 16px 24px; border-radius: 6px; font-weight: 500; font-size: 16px">Work with me</a>
+<a href="Projects.dc.html" style="text-decoration: none; color: #0A0A0A; border: 1px solid #0A0A0A; padding: 15px 23px; border-radius: 6px; font-weight: 500; font-size: 16px">See projects</a>
+</div>
+</div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,110px"></dc-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"photo":{"editor":"text","default":"/_blob/66aa9a5e4773dad7a1fadd965095f601","section":"Photo or logo"},"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+renderVals() {
+const photo = this.props.photo ?? '/_blob/66aa9a5e4773dad7a1fadd965095f601';
+return { photo: photo, hasPhoto: !!photo, noPhoto: !photo };
+}
+}
+</script>
+</body>
+</html>

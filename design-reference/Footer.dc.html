@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>dB Builds — Shared footer</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<footer style="font-family: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif; color: #525252; background: #FFFFFF; border-top: 1px solid #E5E5E5">
+<div style="max-width: 1200px; margin: 0 auto; padding: 40px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 14px">
+<span>© 2026 dB Builds</span>
+<div style="display: flex; flex-wrap: wrap; gap: 24px">
+<a href="{{xUrl}}" style="color: #525252">X</a>
+<a href="{{telegramUrl}}" style="color: #525252">Telegram</a>
+<a href="{{discordUrl}}" style="color: #525252">Discord</a>
+<a href="{{githubUrl}}" style="color: #525252">GitHub</a>
+</div>
+</div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"xUrl":{"editor":"text","default":"https://x.com","section":"Social links"},"telegramUrl":{"editor":"text","default":"https://telegram.org","section":"Social links"},"discordUrl":{"editor":"text","default":"https://discord.com","section":"Social links"},"githubUrl":{"editor":"text","default":"https://github.com","section":"Social links"},"$preview":{"width":1440,"height":110}}'>
+class Component extends DCLogic {
+renderVals() {
+const p = this.props;
+return {
+xUrl: p.xUrl ?? 'https://x.com',
+telegramUrl: p.telegramUrl ?? 'https://telegram.org',
+discordUrl: p.discordUrl ?? 'https://discord.com',
+githubUrl: p.githubUrl ?? 'https://github.com'
+};
+}
+}
+</script>
+</body>
+</html>

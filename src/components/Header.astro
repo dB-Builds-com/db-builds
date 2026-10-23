@@ -1,0 +1,77 @@
+---
+import { nav } from '../config/site';
+
+const currentPath = Astro.url.pathname;
+
+function isActive(href: string) {
+  return href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+}
+---
+
+<header class="header">
+  <nav class="container header-nav">
+    <a href="/" class="wordmark">dB Builds</a>
+    <div class="header-links">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+            class="header-link"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a href="/contact" class="btn btn-solid header-cta">Start a project</a>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .header {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .header-nav {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .wordmark {
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.03em;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .header-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 28px;
+    font-size: 15px;
+  }
+
+  .header-link {
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .header-link[aria-current='page'] {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    font-weight: 500;
+  }
+
+  .header-cta {
+    padding: 12px 18px;
+    font-size: 15px;
+  }
+</style>

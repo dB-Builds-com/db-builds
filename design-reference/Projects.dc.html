@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>dB Builds — Projects</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#0A0A0A}a:hover{color:#525252}
+</style>
+</helmet>
+<div style="font-family: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif; color: #0A0A0A; background: #FFFFFF; min-height: 100%">
+
+<header style="border-bottom: 1px solid #E5E5E5">
+<nav style="max-width: 1200px; margin: 0 auto; padding: 20px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="Main.dc.html" style="font-weight: 700; font-size: 20px; letter-spacing: -0.03em; text-decoration: none; color: #0A0A0A">dB Builds</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 15px">
+<a href="Projects.dc.html" aria-current="page" style="text-decoration: underline; text-underline-offset: 6px; color: #0A0A0A; font-weight: 500">Projects</a>
+<a href="Services.dc.html" style="text-decoration: none; color: #0A0A0A">Services</a>
+<a href="About.dc.html" style="text-decoration: none; color: #0A0A0A">About</a>
+<a href="Contact.dc.html" style="text-decoration: none; color: #FFFFFF; background: #0A0A0A; padding: 12px 18px; border-radius: 6px; font-weight: 500">Start a project</a>
+</div>
+</nav>
+</header>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 96px 32px 64px; display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #525252">Projects</p>
+<h1 style="margin: 0; font-size: clamp(44px, 6vw, 80px); line-height: 1; letter-spacing: -0.05em; font-weight: 700">Things I’ve built,<br>and am building.</h1>
+<p style="margin: 0; max-width: 600px; font-size: 19px; line-height: 1.55; color: #525252">Bots, apps, and on-chain tools. Some for clients, some for myself, all shipped.</p>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 0 32px 64px">
+<article style="border: 1px solid #0A0A0A; border-radius: 10px; display: flex; flex-wrap: wrap; overflow: hidden">
+<div style="flex: 1 1 460px; padding: 48px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; background: #0A0A0A; color: #FFFFFF; border-radius: 999px; padding: 6px 12px">In development</span>
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid #D4D4D4; border-radius: 999px; padding: 6px 12px">Trading bot</span>
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid #D4D4D4; border-radius: 999px; padding: 6px 12px">Solana</span>
+</div>
+<h2 style="margin: 0; font-size: 56px; letter-spacing: -0.04em; font-weight: 700">CopyBot</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #525252">A copy trading bot that mirrors the wallets you pick, but only when your rules say so. Every condition, trade size, and exit is customizable.</p>
+<a href="Contact.dc.html" style="align-self: flex-start; text-decoration: none; color: #FFFFFF; background: #0A0A0A; padding: 14px 22px; border-radius: 6px; font-weight: 500; font-size: 15px">Get early access</a>
+</div>
+<div style="flex: 1 1 460px; min-height: 320px; background: #F5F5F5; border-left: 1px solid #E5E5E5; display: flex; align-items: center; justify-content: center; overflow: hidden">
+<sc-if value="{{copybotHasImage}}" hint-placeholder-val="{{ false }}"><img src="{{copybotImage}}" alt="CopyBot logo" style="width: 100%; height: 100%; min-height: 320px; object-fit: cover; display: block"></sc-if>
+<sc-if value="{{copybotNoImage}}" hint-placeholder-val="{{ true }}"><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 14px; color: #525252">[CopyBot screenshot]</span></sc-if>
+</div>
+</article>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 0 32px 120px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px">
+<sc-for list="{{projects}}" as="item" hint-placeholder-count="3">
+<article style="border: 1px solid #E5E5E5; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column">
+<div style="height: 200px; background: #F5F5F5; display: flex; align-items: center; justify-content: center; overflow: hidden">
+<sc-if value="{{item.hasImage}}" hint-placeholder-val="{{ false }}"><img src="{{item.image}}" alt="{{item.name}}" style="width: 100%; height: 100%; object-fit: cover; display: block"></sc-if>
+<sc-if value="{{item.noImage}}" hint-placeholder-val="{{ true }}"><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 13px; color: #525252">[Image]</span></sc-if>
+</div>
+<div style="padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: #525252">{{item.category}}</span>
+<h3 style="margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em">{{item.name}}</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #525252">{{item.desc}}</p>
+</div>
+</article>
+</sc-for>
+</div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,110px"></dc-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"copybotImage":{"editor":"text","default":"/_blob/4b16b863b71713d7b1c0bbfb16d98c32","section":"CopyBot"},"card1Image":{"editor":"text","default":"","section":"Project card 1"},"card1Category":{"editor":"text","default":"[Category]","section":"Project card 1"},"card1Name":{"editor":"text","default":"[Project name]","section":"Project card 1"},"card1Description":{"editor":"text","default":"[One-line description of what it does and who it’s for.]","section":"Project card 1"},"card2Image":{"editor":"text","default":"","section":"Project card 2"},"card2Category":{"editor":"text","default":"[Category]","section":"Project card 2"},"card2Name":{"editor":"text","default":"[Project name]","section":"Project card 2"},"card2Description":{"editor":"text","default":"[One-line description of what it does and who it’s for.]","section":"Project card 2"},"card3Image":{"editor":"text","default":"","section":"Project card 3"},"card3Category":{"editor":"text","default":"[Category]","section":"Project card 3"},"card3Name":{"editor":"text","default":"[Project name]","section":"Project card 3"},"card3Description":{"editor":"text","default":"[One-line description of what it does and who it’s for.]","section":"Project card 3"},"$preview":{"width":1440,"height":1900}}'>
+class Component extends DCLogic {
+renderVals() {
+const p = this.props;
+const desc = '[One-line description of what it does and who it’s for.]';
+const card = (n) => {
+const image = p['card' + n + 'Image'] ?? '';
+return {
+image: image,
+hasImage: !!image,
+noImage: !image,
+category: p['card' + n + 'Category'] ?? '[Category]',
+name: p['card' + n + 'Name'] ?? '[Project name]',
+desc: p['card' + n + 'Description'] ?? desc
+};
+};
+const copybotImage = p.copybotImage ?? '/_blob/4b16b863b71713d7b1c0bbfb16d98c32';
+return {
+copybotImage: copybotImage,
+copybotHasImage: !!copybotImage,
+copybotNoImage: !copybotImage,
+projects: [card(1), card(2), card(3)]
+};
+}
+}
+</script>
+</body>
+</html>

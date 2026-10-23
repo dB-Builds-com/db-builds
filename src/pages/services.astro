@@ -1,0 +1,210 @@
+---
+import Base from '../layouts/Base.astro';
+
+const services = [
+  {
+    num: '01',
+    title: 'Trading bots & automation',
+    pitch:
+      "Bots that watch, decide, and act on the rules you set, so you're not glued to a chart.",
+    items: [
+      'Copy trading and wallet tracking',
+      'Custom rule engines and trade limits',
+      'Alerts to Telegram, Discord, or your phone',
+      'Hosting and monitoring on your own server',
+    ],
+  },
+  {
+    num: '02',
+    title: 'Websites & web apps',
+    pitch:
+      'Clean, fast sites and full-stack apps for businesses, projects, and communities.',
+    items: [
+      'Landing pages and marketing sites',
+      'Dashboards and internal tools',
+      'Embeddable widgets for existing sites',
+      'Deployment, domains, and hosting setup',
+    ],
+  },
+  {
+    num: '03',
+    title: 'Solana & token tooling',
+    pitch: 'Tools for launching, analyzing, and running tokens on Solana.',
+    items: [
+      'Token analysis and scoring tools',
+      'Launch sites and community automation',
+      'Buyback and fee mechanics',
+      'Wallet and on-chain data integrations',
+    ],
+  },
+];
+---
+
+<Base
+  title="Services"
+  description="Three kinds of work, one approach: plan it properly, build it in the open, ship something that works."
+>
+  <section class="intro container">
+    <p class="mono-label">Services</p>
+    <h1 class="intro-title">Bring the idea.<br />I'll build the product.</h1>
+    <p class="intro-sub">
+      Three kinds of work, one approach: plan it properly, build it in the
+      open, ship something that works.
+    </p>
+  </section>
+
+  <section class="services-list container">
+    {
+      services.map((service, i) => (
+        <article
+          class="service-row"
+          style={i === services.length - 1 ? 'border-bottom: 1px solid var(--ink)' : ''}
+        >
+          <div class="service-text">
+            <span class="mono-num">{service.num}</span>
+            <h2 class="service-title">{service.title}</h2>
+            <p class="service-pitch">{service.pitch}</p>
+          </div>
+          <ul class="service-items">
+            {service.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+      ))
+    }
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <div class="cta-text">
+        <h2 class="cta-title">Every project is quoted to fit.</h2>
+        <p class="cta-sub">
+          Tell me what you're building and I'll come back with a plan and a
+          quote.
+        </p>
+      </div>
+      <a href="/contact" class="btn btn-solid-inverted cta-btn">Get a quote</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .intro {
+    padding-top: 96px;
+    padding-bottom: 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .intro-title {
+    font-size: clamp(44px, 6vw, 80px);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    font-weight: 700;
+  }
+
+  .intro-sub {
+    max-width: 600px;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+
+  .services-list {
+    padding-bottom: 96px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-row {
+    border-top: 1px solid var(--ink);
+    padding-top: 48px;
+    padding-bottom: 48px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px 64px;
+  }
+
+  .service-text {
+    flex: 1 1 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .mono-num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .service-title {
+    font-size: 34px;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+  }
+
+  .service-pitch {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  .service-items {
+    flex: 1 1 360px;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+  }
+
+  .service-items li {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .cta-band {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .cta-inner {
+    padding-top: 96px;
+    padding-bottom: 96px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .cta-text {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 620px;
+  }
+
+  .cta-title {
+    font-size: clamp(32px, 4vw, 52px);
+    letter-spacing: -0.04em;
+    font-weight: 700;
+    line-height: 1.05;
+  }
+
+  .cta-sub {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--chip);
+  }
+
+  .cta-btn {
+    padding: 18px 28px;
+    font-weight: 600;
+    font-size: 17px;
+  }
+</style>
