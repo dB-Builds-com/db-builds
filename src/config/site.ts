@@ -9,7 +9,7 @@ export const site = {
 export const social = {
   x: { handle: '@dB00085', url: 'https://x.com/db00085' },
   telegram: { handle: '@dB00085', url: 'https://t.me/dB00085' },
-  discord: { label: 'db00085', url: 'https://discord.gg/db00085' },
+  discord: { label: 'db00085', url: 'https://discord.com/users/919610560679657523' },
   github: { handle: '@dB00085', url: 'https://github.com/dB00085' },
 };
 
